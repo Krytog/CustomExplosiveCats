@@ -1,0 +1,3 @@
+[submodule "src/Contrib/MOLS"]
+	path = src/Contrib/MOLS
+	url = git@github.com:Krytog/MOLS.git
