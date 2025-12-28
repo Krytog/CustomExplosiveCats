@@ -1,9 +1,13 @@
 #include "BaseCard.h"
 
-BaseCard::BaseCard(CardTypeId type_id, CardSubtypeId subtype_id) noexcept
- : type_id_(type_id), subtype_id_(subtype_id) {}
+BaseCard::BaseCard(CardId id, CardTypeId type_id, CardSubtypeId subtype_id) noexcept
+ : id_(id), type_id_(type_id), subtype_id_(subtype_id) {}
 
 BaseCard::~BaseCard() = default;
+
+CardId BaseCard::GetCardId() const noexcept {
+    return id_;
+}
 
 CardTypeId BaseCard::GetTypeId() const noexcept {
     return type_id_;

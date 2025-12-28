@@ -1,2 +1,5 @@
 add_subdirectory(Cards)
 add_subdirectory(CardUtilities)
+add_subdirectory(Entities)
+add_subdirectory(MatchActions)
+add_subdirectory(Runtime)
