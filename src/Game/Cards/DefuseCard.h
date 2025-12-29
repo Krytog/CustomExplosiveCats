@@ -2,9 +2,9 @@
 
 #include <Game/Cards/BaseCard.h>
 
-class FutureGlanceCard : public BaseCard {
+class DefuseCard : public BaseCard {
 public:
-    FutureGlanceCard(CardId id, CardSubtypeId subtype_id);
+    DefuseCard(CardId id, CardSubtypeId subtype_id);
 
     void Play(const Context* context) const override;
 };

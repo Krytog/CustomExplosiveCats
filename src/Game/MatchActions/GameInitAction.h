@@ -4,5 +4,5 @@
 
 class GameInitAction : public IMatchAction {
 public:
-    void Execute(Context* context) const override;
+    void Execute(Context* context, PlayerId owner, PlayerId target) const override;
 };

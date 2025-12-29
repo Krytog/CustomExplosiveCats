@@ -6,7 +6,7 @@
 
 CardCollection::CardCollection() = default;
 
-std::unique_ptr<BaseCard> CardCollection::TakeCard(size_t index) {
+std::shared_ptr<BaseCard> CardCollection::TakeCard(size_t index) {
     if (index >= cards_.size()) {
         throw Exception("CardCollection:TakeCard, index = {}, size = {}", index, cards_.size());
     }
@@ -24,11 +24,11 @@ BaseCard* CardCollection::GetCard(size_t index) const {
     return cards_[index].get();
 }
 
-void CardCollection::InsertCard(std::unique_ptr<BaseCard>&& card) {
+void CardCollection::InsertCard(const std::shared_ptr<BaseCard>& card) {
     cards_.push_back(std::move(card));
 }
 
-void CardCollection::InsertCardAt(std::unique_ptr<BaseCard>&& card, size_t index) {
+void CardCollection::InsertCardAt(const std::shared_ptr<BaseCard>& card, size_t index) {
     cards_.insert(cards_.begin() + index, std::move(card));
 }
 
@@ -38,7 +38,7 @@ void CardCollection::Reorder(const std::vector<size_t>& new_indices) {
     }
 
     std::unordered_set<size_t> used_indices;
-    std::vector<std::unique_ptr<BaseCard>> temp(cards_.size());
+    std::vector<std::shared_ptr<BaseCard>> temp(cards_.size());
     for (size_t i = 0; i < new_indices.size(); ++i) {
         const size_t index = new_indices[i];
 
@@ -77,4 +77,23 @@ std::vector<BaseCard*> CardCollection::GetAllCardsOfType(CardTypeId type_id) con
         }
     }
     return output;
+}
+
+size_t CardCollection::GetIndexById(CardId id) const {
+    for (size_t i = 0; i < cards_.size(); ++i) {
+        if (cards_[i]->GetCardId() == id) {
+            return i;
+        }
+    }
+
+    throw Exception("CardCollection::GetIndexById: no card with id = {}", id);
+}
+
+bool CardCollection::HasGivenId(CardId id) const {
+    for (size_t i = 0; i < cards_.size(); ++i) {
+        if (cards_[i]->GetCardId() == id) {
+            return true;
+        }
+    }
+    return false;
 }

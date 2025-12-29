@@ -16,3 +16,11 @@ CardTypeId BaseCard::GetTypeId() const noexcept {
 CardSubtypeId BaseCard::GetSubtypeId() const noexcept {
     return subtype_id_;
 }
+
+bool BaseCard::IsComposite() const noexcept {
+    return false;
+}
+
+std::vector<std::shared_ptr<BaseCard>> BaseCard::GetComponents() const {
+    return {};
+}

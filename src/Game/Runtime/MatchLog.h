@@ -5,7 +5,6 @@
 
 #include <memory>
 #include <vector>
-#include <stack>
 
 class IMatchAction; // forward-declaration
 
@@ -13,8 +12,8 @@ class MatchLog {
 public:
     struct LogEntry {
         std::unique_ptr<IMatchAction> action;
-        PlayerId target;
         PlayerId owner;
+        PlayerId target;
     };
 
     MatchLog();
@@ -27,5 +26,4 @@ public:
 
 private:
     std::vector<LogEntry> entries_;
-    std::stack<std::shared_ptr<BaseCard>> resolve_stack_;
 };

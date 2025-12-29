@@ -22,8 +22,15 @@ public:
 
     void SetWhoseTurn(PlayerId id);
 
+    [[nodiscard]] size_t GetTurnsForPlayer(PlayerId id) const;
+
+    void SetTurnsForPlayer(PlayerId id, size_t turns);
+
+    [[nodiscard]] size_t GetNotLostPlayerCount() const noexcept;
+
 private:
     std::unordered_map<PlayerId, Player> players_;
+    std::unordered_map<PlayerId, size_t> turns_to_make_;
     std::vector<PlayerId> players_order_;
     PlayerId whose_turn_;
     PlayerId next_free_id_{1};

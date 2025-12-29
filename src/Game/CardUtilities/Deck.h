@@ -4,15 +4,15 @@
 
 class Deck {
 public:
-    Deck(std::vector<std::unique_ptr<BaseCard>>&& cards);
+    Deck(std::vector<std::shared_ptr<BaseCard>>&& cards);
 
-    std::unique_ptr<BaseCard> Draw();
+    std::shared_ptr<BaseCard> Draw();
 
-    std::unique_ptr<BaseCard> TakeCardAt(size_t index);
+    std::shared_ptr<BaseCard> TakeCardAt(size_t index);
 
-    void PlaceOnTop(std::unique_ptr<BaseCard>&& card);
+    void PlaceOnTop(const std::shared_ptr<BaseCard>& card);
 
-    void PlaceAtBottom(std::unique_ptr<BaseCard>&& card);
+    void PlaceAtBottom(const std::shared_ptr<BaseCard>& card);
 
     void Shuffle(const std::vector<size_t>& new_indices);
 

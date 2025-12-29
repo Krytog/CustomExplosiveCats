@@ -2,13 +2,13 @@
 
 #include <Utils/Exceptions.h>
 
-Deck::Deck(std::vector<std::unique_ptr<BaseCard>>&& cards) {
+Deck::Deck(std::vector<std::shared_ptr<BaseCard>>&& cards) {
     for (auto&& card : cards) {
         cards_.InsertCard(std::move(card));
     }
 }
 
-std::unique_ptr<BaseCard> Deck::Draw() {
+std::shared_ptr<BaseCard> Deck::Draw() {
     if (!cards_.GetSize()) {
         throw Exception("Deck::Draw: draw from empty deck");
     }
@@ -16,15 +16,15 @@ std::unique_ptr<BaseCard> Deck::Draw() {
     return cards_.TakeCard(0);
 }
 
-std::unique_ptr<BaseCard> Deck::TakeCardAt(size_t index) {
+std::shared_ptr<BaseCard> Deck::TakeCardAt(size_t index) {
     return cards_.TakeCard(index);
 }
 
-void Deck::PlaceOnTop(std::unique_ptr<BaseCard>&& card) {
+void Deck::PlaceOnTop(const std::shared_ptr<BaseCard>& card) {
     cards_.InsertCardAt(std::move(card), 0);
 }
 
-void Deck::PlaceAtBottom(std::unique_ptr<BaseCard>&& card) {
+void Deck::PlaceAtBottom(const std::shared_ptr<BaseCard>& card) {
     cards_.InsertCard(std::move(card));
 }
 

@@ -2,9 +2,9 @@
 
 #include <Game/Cards/BaseCard.h>
 
-class FutureGlanceCard : public BaseCard {
+class CatCard : public BaseCard {
 public:
-    FutureGlanceCard(CardId id, CardSubtypeId subtype_id);
+    CatCard(CardId id, CardTypeId type_id);
 
     void Play(const Context* context) const override;
 };
