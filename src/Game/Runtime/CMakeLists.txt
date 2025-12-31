@@ -1,6 +1,8 @@
 add_library(ec_game_runtime
     MatchLog.cpp
     Runtime.cpp
+    CardResolver.cpp
+    PlayersHolder.cpp
 )
 
 target_include_directories(ec_game_runtime PRIVATE ${BASE_SRC_PATH})

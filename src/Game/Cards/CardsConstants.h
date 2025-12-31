@@ -33,4 +33,17 @@ static const size_t kCatCardsCount = 4;
 
 static const size_t kCardsToDealCount = 6;
 
+bool IsCardPlayable(CardTypeId type_id) {
+    switch (type_id) {
+        case kDenyCardTypeId:
+        case kAttackCardTypeId:
+        case kSkipCardTypeId:
+        case kTakeAwayCardTypeId:
+        case kReorderDeckCardTypeId:
+        case kFutureGlanceCardTypeId:
+            return true;
+    }
+    return false;
+}
+
 }

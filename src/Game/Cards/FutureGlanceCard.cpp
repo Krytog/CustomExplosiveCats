@@ -18,5 +18,5 @@ void FutureGlanceCard::Play(const Context* context) const {
         auto* card = context->world->GetDeck().GetCardAt(i);
         cards_to_show.push_back(card);
     }
-    context->io->SendCards(cards_to_show);
+    context->io->SendCards(context->owner->GetId(), cards_to_show, GameIO::SendReason::CardsShown);
 }

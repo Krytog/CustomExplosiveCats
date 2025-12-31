@@ -14,6 +14,8 @@ public:
 
     void PlaceAtBottom(const std::shared_ptr<BaseCard>& card);
 
+    void PlaceAt(const std::shared_ptr<BaseCard>& card, size_t index);
+
     void Shuffle(const std::vector<size_t>& new_indices);
 
     [[nodiscard]] size_t GetSize() const;

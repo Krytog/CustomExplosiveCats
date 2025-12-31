@@ -15,7 +15,8 @@ public:
         PlayersHolder* players_holder;
         CardResolver* card_resolver;
         Fortuna* fortuna;
-        GameIO* io; 
+        GameIO* io;
+        bool* is_game_over;
     };
 
     virtual ~IMatchAction() = default;

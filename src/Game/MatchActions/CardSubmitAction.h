@@ -6,7 +6,7 @@
 
 class BaseCard; // forward-declaration
 
-class CardSubmitAction : IMatchAction {
+class CardSubmitAction : public IMatchAction {
 public:
     CardSubmitAction(const std::shared_ptr<BaseCard>& card);
 

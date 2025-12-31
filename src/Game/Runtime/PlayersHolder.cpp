@@ -41,7 +41,7 @@ const Player* PlayersHolder::GetPlayer(PlayerId id) const {
     return &players_.at(id);
 }
 
-size_t PlayersHolder::GetNextPlayerId(PlayerId id) const {
+PlayerId PlayersHolder::GetNextPlayerId(PlayerId id) const {
     const auto player_it = std::find(players_order_.begin(), players_order_.end(), id);
     if (player_it == players_order_.end()) {
         throw Exception("PlayersHolder::GetNextPlayerId: no player with id = {}", id);
@@ -81,12 +81,28 @@ void PlayersHolder::SetTurnsForPlayer(PlayerId id, size_t turns) {
     turns_to_make_[id] = turns;
 }
 
-size_t PlayersHolder::GetNotLostPlayerCount() const noexcept {
-    size_t output = 0;
+std::vector<PlayerId> PlayersHolder::GetNotLostPlayers() const {
+    std::vector<PlayerId> output;
     for (const auto& [id, player] : players_) {
         if (!player.HasLost()) {
-            ++output;
+            output.push_back(player.GetId());
         }
     }
     return output;
+}
+
+void PlayersHolder::HandOver() {
+    const auto next_player = GetNextPlayerId(whose_turn_);
+    if (!turns_to_make_[next_player]) {
+        turns_to_make_[next_player] = 1;
+    }
+    whose_turn_ = next_player;
+}
+
+bool PlayersHolder::CanTurnEndWithoutDraw() const noexcept {
+    return no_draw_this_turn_;
+}
+
+void PlayersHolder::SetWetherTurnCanEndWithoutDraw(bool no_draw_this_turn) noexcept {
+    no_draw_this_turn_ = no_draw_this_turn;
 }

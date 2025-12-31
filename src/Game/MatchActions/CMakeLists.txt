@@ -1,5 +1,10 @@
 add_library(ec_game_matchactions
     GameInitAction.cpp
+    CardSubmitAction.cpp
+    PositiveResolveAction.cpp
+    NegativeResolveAction.cpp
+    StartTurnAction.cpp
+    EndTurnAction.cpp
 )
 
 target_include_directories(ec_game_matchactions PRIVATE ${BASE_SRC_PATH})

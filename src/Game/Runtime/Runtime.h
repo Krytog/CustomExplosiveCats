@@ -14,6 +14,7 @@ public:
         World world;
         PlayersHolder players_holder;
         CardResolver card_resolver_;
+        bool is_game_over_;
     };
 
     struct TechSystems {
@@ -34,4 +35,8 @@ private:
     StateMachine state_machine_;
     TechSystems tech_systems_;
     GameSystems game_systems_;
+
+    void ApplyIfSubmitIntentionIsValid(const GameIO::SubmitIntention& intention);
+
+    void ScheduleTurnTransit();
 };

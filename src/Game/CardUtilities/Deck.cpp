@@ -28,6 +28,10 @@ void Deck::PlaceAtBottom(const std::shared_ptr<BaseCard>& card) {
     cards_.InsertCard(std::move(card));
 }
 
+void Deck::PlaceAt(const std::shared_ptr<BaseCard>& card, size_t index) {
+    cards_.InsertCardAt(card, index);
+}
+
 void Deck::Shuffle(const std::vector<size_t>& new_indices) {
     cards_.Reorder(new_indices);
 }

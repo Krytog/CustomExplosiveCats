@@ -3,6 +3,10 @@ add_library(ec_game_cards
     ExplosiveCatCard.cpp
     DefuseCard.cpp
     DenyCard.cpp
+    AttackCard.cpp
+    SkipCard.cpp
+    TakeAwayCard.cpp
+    ReorderDeckCard.cpp
     FutureGlanceCard.cpp
     CatCard.cpp
 )

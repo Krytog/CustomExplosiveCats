@@ -13,6 +13,8 @@ public:
 
     [[nodiscard]] BaseCard* GetCard(size_t index) const;
 
+    [[nodiscard]] std::shared_ptr<BaseCard> GetCardAsShared(size_t index) const;
+
     void InsertCard(const std::shared_ptr<BaseCard>& card);
 
     void InsertCardAt(const std::shared_ptr<BaseCard>& card, size_t index);    

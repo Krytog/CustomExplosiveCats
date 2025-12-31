@@ -97,3 +97,10 @@ bool CardCollection::HasGivenId(CardId id) const {
     }
     return false;
 }
+
+std::shared_ptr<BaseCard> CardCollection::GetCardAsShared(size_t index) const {
+    if (index >= cards_.size()) {
+        throw Exception("CardCollection:GetCardAsShared, index = {}, size = {}", index, cards_.size());
+    }
+    return cards_[index];
+}
